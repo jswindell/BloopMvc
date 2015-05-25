@@ -1,25 +1,20 @@
 ﻿@model IEnumerable<BloopMvc.Models.BloopFile>
 
 @{
-    Layout = null;
+    ViewBag.Title = "List of Files";
 }
 
-<!DOCTYPE html>
+<h2>List of Files</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
+<div>
 
-        @foreach (var item in Model)
-        {
-            <h4>@item.Name</h4>
-            <span>@item.DateTime</span>
-            <p>@item.Content</p>
-        }
-    </div>
-</body>
-</html>
+    @foreach (var item in Model)
+    {
+        <h4>@item.Name</h4>
+        <span>@item.DateTime</span>
+        <p>
+            @Html.ActionLink("See content", "Content", new { Id = @item.Id })
+        </p>
+
+    }
+</div>
