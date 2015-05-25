@@ -1,0 +1,25 @@
+﻿@model IEnumerable<BloopMvc.Models.BloopFile>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+
+        @foreach (var item in Model)
+        {
+            <h4>@item.Name</h4>
+            <span>@item.DateTime</span>
+            <p>@item.Content</p>
+        }
+    </div>
+</body>
+</html>
