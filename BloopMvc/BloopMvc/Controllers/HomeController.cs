@@ -30,11 +30,29 @@ namespace BloopMvc.Controllers
             var bFile = from b in models
                              where b.Id == Id
                              select b;
-            if (bFile.Count() == 1)
 
+            if (bFile.Count() == 1)
                 return View(bFile.First<BloopFile>());
             else
-                return RedirectToRoute("Index");
+                return RedirectToAction("Index");
+        }
+
+        public ActionResult Upload()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase file)
+        {
+            if (file != null && file.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var path = Path.Combine(Server.MapPath("~/App_Data/"), fileName);
+                file.SaveAs(path);
+            }
+
+            return RedirectToAction("Index");
         }
 
         private void SetupModel()
