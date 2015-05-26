@@ -50,7 +50,7 @@ namespace BloopMvc.Controllers
                         var model = new BloopFile();
 
                         model.Id = fileId++;
-                        model.Name = file;
+                        model.Name = Path.GetFileName(file);
                         model.DateTime = System.IO.File.GetLastWriteTime(file);
                         model.Content = System.IO.File.ReadAllText(file);
                         models.Add(model);
