@@ -11,7 +11,8 @@ namespace BloopMvc.Models
         public static IEnumerable<BloopFile> FindFiles(string path)
         {
             if (path == null)
-                throw new ArgumentNullException(nameof(path));
+                //throw new ArgumentNullException(nameof(path));  //for c# 6
+                throw new ArgumentNullException(path);
 
             if (!Directory.Exists(path))
                 return Enumerable.Empty<BloopFile>();
